@@ -1,0 +1,37 @@
+<%= form_with(model: url) do |form| %>
+  <% if url.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
+
+      <ul>
+        <% url.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <div>
+        <%= form.label :url, style: "display: block" %>
+        <%= form.text_field :url, placeholder: 'https://www.yankees.com', size: 50 %>
+        <%= form.submit 'Create Url', class: "btn btn-primary" %>
+      </div>
+
+<!--      <div>-->
+        <%#= form.label :title, style: "display: block" %>
+        <%#= form.text_field :title %>
+<!--      </div>-->
+
+<!--      <div>-->
+        <%#= form.label :image, style: "display: block" %>
+        <%#= form.text_field :image %>
+<!--      </div>-->
+
+<!--      <div>-->
+<!--      </div>-->
+
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,14 @@
+<% url = locals[:url] %>
+<div class="container">
+  <h5 class="card-title"><%= url.title %></h5>
+
+  <div class="card" >
+    <a href="<%= url.url %>">
+      <img src="<%= url.image %>" class="card-img-top" alt="<%= url.title %>">
+      <div class="card-body">
+        <p class="card-text"><%= URI.parse(url.url).host %></p>
+        <p class="card-text"><%= url.description %></p>
+      </div>
+    </a>
+  </div>
+</div>

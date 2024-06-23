@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="urls" class="container-md">
+  <h1>Preview Opengraph Information from Webpages</h1>
+  <%= render "form", url: @url %>
+
+  <p></p>
+  <div class="container-sm">
+    <table class="table table-striped table-bordered table-small">
+      <thead>
+      <th scope="col">URL</th>
+      <th scope="col">Title</th>
+      <th scope="col">Image</th>
+      <th></th>
+      <th></th>
+      </thead>
+      <tbody class="table-group-divider">
+      <% @urls.each do |url| %>
+        <%= render url %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
