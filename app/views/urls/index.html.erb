@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<%= turbo_stream_from "urls" %>
+
 <div id="urls" class="container-md">
-  <h1>Preview Opengraph Information from Webpages</h1>
+  <div class="card shadow">
+    <h2 style="padding-left: 5px;">Preview Opengraph Information from Webpages</h2>
+  </div>
   <%= render "form", url: @url %>
 
   <p></p>
@@ -11,7 +15,6 @@
       <th scope="col">URL</th>
       <th scope="col">Title</th>
       <th scope="col">Image</th>
-      <th></th>
       <th></th>
       </thead>
       <tbody class="table-group-divider">
