@@ -1,23 +1,27 @@
-<%= form_with(model: url) do |form| %>
-  <% if url.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
+<%= turbo_frame_tag "url_form_frame" do %>
+  <%= form_with(model: url) do |form| %>
+    <% if url.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(url.errors.count, "error") %> prohibited this url from being saved:</h2>
 
-      <ul>
-        <% url.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="card shadow">
-    <div class="card-body">
-      <div>
-        <%= form.label :url, style: "display: block" %>
-        <%= form.text_field :url, placeholder: 'https://website_of_your_choice', size: 50 %>
-        <%= form.submit 'Create Url', class: "btn btn-primary" %>
+        <ul>
+          <% url.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="card shadow">
+      <div class="card-body">
+        <div>
+          <%= form.label :url, style: "display: block" %>
+          <%= form.text_field :url, placeholder: 'https://website_of_your_choice', size: 50 %>
+          <%= form.submit 'Create Url', class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
-  </div>
+
+  <% end %>
+  <p id="flash" style="color: green"><%= notice %></p>
 
 <% end %>

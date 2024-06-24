@@ -1,32 +1,21 @@
-<style>
-    img {
-        display: block;
-        max-width:130px;
-        max-height:135px;
-        width: auto;
-        height: auto;
-    }
-</style>
-<div <% dom_id url %>>
-  <tr>
-    <td><%= url.url %> </td>
-    <td><%= url.title %></td>
-    <td><img src="<%= url.image %>" class="img" alt="no image"></td>
-    <td>
-      <%= button_to url, class: "btn shadow-none", :method=> :get,
-                    data: { bs_toggle: "tooltip",
-                            bs_title: "Details",
-                            turbo: false,
-                            turbo_method: :get } do %>
-        <i class="bi-zoom-in" style="font-size: 1rem; color: red;"></i>
-      <% end %>
-      <%= button_to url, class: "btn shadow-none", :method=> :delete,
-                    data: { bs_toggle: "tooltip",
-                            bs_title: "Delete this url",
-                            turbo_method: :delete,
-                            turbo_confirm: "Are you sure you want to delete #{url.url}?" } do %>
-        <i class="bi-trash" style="font-size: 1rem; color: red;"></i>
-      <% end %>
-    </td>
-  </tr>
-</div>
+    <tr>
+      <td><%= url.url %> </td>
+      <td><%= url.title %></td>
+      <td><img src="<%= url.image %>" class="img" alt="no image"></td>
+      <td>
+        <%= button_to url, class: "btn shadow-none", :method=> :get,
+                      data: { bs_toggle: "tooltip",
+                              bs_title: "Details",
+                              turbo: false,
+                              turbo_method: :get } do %>
+          <i class="bi-zoom-in" style="font-size: 1rem; color: red;"></i>
+        <% end %>
+        <%= button_to url, class: "btn shadow-none", :method=> :delete,
+                      data: { bs_toggle: "tooltip",
+                              bs_title: "Delete this url",
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure you want to delete #{url.url}?" } do %>
+          <i class="bi-trash" style="font-size: 1rem; color: red;"></i>
+        <% end %>
+      </td>
+    </tr>

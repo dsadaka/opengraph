@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
 
   # GET /urls or /urls.json
   def index
-    @urls = Url.all
+    @urls = Url.all.order(updated_at: :desc)
     @url = Url.new
   end
 
@@ -24,22 +24,15 @@ class UrlsController < ApplicationController
   def create
     @url = Url.find_by_url(url_params[:url]).presence ||  Url.new(url_params)
 
-    unless @url.persisted?
-      metatags = OgService.new(url_params[:url]).getMetaTags
-      @url.assign_attributes(metatags) if metatags.present?
-    end
-
-    duplicate = Url.find_by_url(@url.url).present?
+    duplicate = @url.persisted?
+    FetchOgJob.perform_later(url: url_params[:url]) unless duplicate
 
     respond_to do |format|
       if duplicate
-        format.html { redirect_to url_url(@url), notice: "Url already saved." }
-      elsif @url.save
-        format.html { redirect_to url_url(@url), notice: "Url was successfully created." }
-        format.json { render :show, status: :created, location: @url }
+        format.html { redirect_to urls_url(@url), notice: "Url already on file." }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
+        format.html { redirect_to urls_url(@url), notice: "Url processing." }
+        format.json { render :show, status: :created, location: @url }
       end
     end
   end

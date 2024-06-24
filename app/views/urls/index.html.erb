@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
 
 <%= turbo_stream_from "urls" %>
 
-<div id="urls" class="container-md">
+<div class="container-md">
   <div class="card shadow">
-    <h2 style="padding-left: 5px;">Preview Opengraph Information from Webpages</h2>
+    <h2 style="padding-left: 15px;">Preview Opengraph Information from Webpages</h2>
   </div>
   <%= render "form", url: @url %>
 
@@ -17,11 +16,24 @@
       <th scope="col">Image</th>
       <th></th>
       </thead>
-      <tbody class="table-group-divider">
-      <% @urls.each do |url| %>
-        <%= render url %>
-      <% end %>
+      <tbody id="urls" class="table-group-divider">
+        <turbo-stream action="prepend" target="urls">
+          <template>
+          <% @urls.each do |url| %>
+            <%= render url %>
+          <% end %>
+          </template>
+        </turbo-stream>
       </tbody>
     </table>
   </div>
 </div>
+<style>
+    img {
+        display: block;
+        max-width:130px;
+        max-height:135px;
+        width: auto;
+        height: auto;
+    }
+</style>

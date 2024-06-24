@@ -11,6 +11,7 @@ gem 'bootstrap'
 gem 'bootstrap-icons'
 gem 'sassc-rails'
 gem 'nokogiri'
+gem 'sidekiq'
 
 
 # Use postgresql as the database for Active Record

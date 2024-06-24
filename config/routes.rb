@@ -1,3 +1,8 @@
+require 'sidekiq/web'
+Luna::Application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web
+end
+
 Rails.application.routes.draw do
   resources :urls
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
