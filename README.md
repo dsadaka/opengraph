@@ -9,8 +9,6 @@ _Note: Not all pages include the OG tags so don't get upset if any of these valu
 
 ![Screenshot](https://website1-screenshots.s3.amazonaws.com/OpenGraphScreenshot.png)
 
-Things you may want to cover:
-
 ## System dependencies
 
 URL lookups are processed asynchronously in a background job using Sidekiq.  Therefore a redis server must be installed locally.
@@ -55,9 +53,9 @@ As usual, I try not to load up my stack with unnecessary code and extra steps.  
 creating a new project and go with the minimums.
 
 ### Front End: I elected to use the simplest configuration possible for front-end development.  
-- ImportMaps over Esbuilder: No transpiling required so no need for all that overhead.
+- ImportMaps instead of Esbuilder: No transpiling required so no need for all that overhead.
 - Bootstrap: Used to simplify styling
-- jQuery: Not needed so not used
+- jQuery: Not needed so not installed
                                     
 ### Asynchronous handling
 In the old days, I would have had to use...
@@ -72,10 +70,10 @@ Turbo Frame containing the form
 - grid update: Turbo Streams so hotwire uses ActionCable (web socket) to send a newly added URL record to the front-end
 which then prepends it to the existing table.
 ### Background job Processor:
-- Sidekiq over Resque: Sidekiq is faster and simpler and this application called for quick response, as opposed to, for instance batch emailing or clearing credit card payments.
+- Sidekiq instead of Resque: Sidekiq is faster and simpler and this application called for quick response, as opposed to, for instance batch emailing or clearing credit card payments.
                       
 ## Changes for a real production environment
 - Add User Authentication
 - Allow editing a grid row in place.  (Currently editing is done on the details (show) page and the index page is redrawn)
 - Pagination
-- More specs 
+- More specs! 
