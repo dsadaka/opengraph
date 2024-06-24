@@ -20,10 +20,12 @@ https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/
 
 ## Dependencies
 
--   Ruby 3.2.3 - Installed by you before attempting to run using your favorite ruby version manager (I use RVM)
--   Rails 7.1.3.4 - Installed by bundler
+Install before attempting to run
+-   Ruby 3.2.3 -  using your favorite ruby version manager (I use RVM)
 -   Postgresql - I used 12.18 but anything above version 9.0 should work
--   Bundler 2.5.9
+
+Installed by bundle install (below)
+-   Rails 7.1.3.4 - Installed by bundle install
 
 ## Setup
               
@@ -34,7 +36,7 @@ After installing ruby...
   - ```git clone git@github.com:dsadaka/opengraph.git``` # copy down this repository
   - ```cd opengraph```
   - ```gem install bundler -v=2.5.9```
-  - ``bundle``
+  - ``bundle install``
   - ``cd config``
   - cp -p 
   - ``vim config/database.yml`` # or whatever editor you prefer
@@ -42,6 +44,10 @@ After installing ruby...
   - ```bin/setup``` # Create empty Postgresql database luna_development
 
 ## Go
+
+- ``bin/dev`` at command line.  uses foreman and loads sidekig followed by rails server
+- Load browser and enter http://localhost:3000
+
 
 ## Approach
 
@@ -72,3 +78,4 @@ which then prepends it to the existing table.
 - Add User Authentication
 - Allow editing a grid row in place.  (Currently editing is done on the details (show) page and the index page is redrawn)
 - Pagination
+- More specs 
