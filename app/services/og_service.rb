@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'nokogiri'
 require 'open-uri'
+require 'net/http'
 class OgService
   attr_accessor :url
 
@@ -29,7 +30,7 @@ class OgService
   end
 
   def getDocument
-    document = Nokogiri::HTML(URI.open(url).read)
+    document = Nokogiri::HTML(URI.open(url, :open_timeout => 10, :read_timeout => 10).read)
     document.encoding = 'UTF-8'
     document
   end
