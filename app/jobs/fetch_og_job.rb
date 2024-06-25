@@ -9,6 +9,7 @@ class FetchOgJob < ApplicationJob
 
     metatags = OgService.new(url).getMetaTags
     @url.assign_attributes(metatags) if metatags.present?
+    @url.url = url unless metatags.present?
     @url.title = 'Not available' unless metatags.present?
     @url.save
   end

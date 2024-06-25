@@ -30,7 +30,11 @@ class OgService
   end
 
   def getDocument
-    document = Nokogiri::HTML(URI.open(url, :open_timeout => 10, :read_timeout => 10).read)
+    begin
+      document = Nokogiri::HTML(URI.open(url, :open_timeout => 10, :read_timeout => 10).read)
+    rescue
+      return nil
+    end
     document.encoding = 'UTF-8'
     document
   end

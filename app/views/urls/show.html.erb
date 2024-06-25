@@ -1,10 +1,17 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
 
-<%= render 'show', locals: { url: @url } %>
+  <%= render 'show', locals: { url: @url } %>
 
-<div>
-  <%= link_to "Edit this url", edit_url_path(@url) %> |
-  <%= link_to "Back to urls", urls_path %>
+  <div>
+    <p></p>
+    <%= link_to "Edit this Url", edit_url_path(@url) %> |
+    <%= link_to "Back to Listing Page", urls_path %> |
 
-  <%= button_to "Destroy this url", @url, method: :delete %>
+    <%= link_to "Destroy this Url",
+                { controller: "urls", action: "destroy", id: @url.id },
+                data: { turbo_confirm: 'Are you sure?' ,
+                        turbo_method: :delete } %>
+  </div>
+  <p></p>
 </div>

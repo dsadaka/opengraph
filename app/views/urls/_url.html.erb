@@ -6,6 +6,7 @@
         <%= button_to url, class: "btn shadow-none", :method=> :get,
                       data: { bs_toggle: "tooltip",
                               bs_title: "Details",
+                              bs_placement: 'right',
                               turbo: false,
                               turbo_method: :get } do %>
           <i class="bi-zoom-in" style="font-size: 1rem; color: red;"></i>
@@ -13,9 +14,16 @@
         <%= button_to url, class: "btn shadow-none", :method=> :delete,
                       data: { bs_toggle: "tooltip",
                               bs_title: "Delete this url",
+                              bs_placement: 'right',
                               turbo_method: :delete,
                               turbo_confirm: "Are you sure you want to delete #{url.url}?" } do %>
           <i class="bi-trash" style="font-size: 1rem; color: red;"></i>
         <% end %>
       </td>
     </tr>
+<script type=application/javascript>
+
+  var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+</script>

@@ -76,4 +76,4 @@ which then prepends it to the existing table.
 - Add User Authentication
 - Allow editing a grid row in place.  (Currently editing is done on the details (show) page and the index page is redrawn)
 - Pagination
-- More specs! 
+- More specs 
